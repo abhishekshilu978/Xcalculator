@@ -35,8 +35,85 @@
 // export default App
 
 
-import Xcalculator from "./Calculator/calculator";
+// import Xcalculator from "./Calculator/calculator";
 
-export default function App() {
-  return <Xcalculator />;
+// export default function App() {
+//   return <Xcalculator />;
+// }
+
+
+
+import { useState } from 'react';
+import "./App.css";
+function App() {
+  const [inputVal,setInputVal] = useState('');
+  const [answer,setAnswer] = useState('');
+  const btnVal = (e) => {
+    const value = e.target.value;
+
+    // if (value === "c") {
+    //   setInputVal("");
+    //   setAnswer("")
+    // }
+    // else if(value === "="){
+    //   try{
+    //     const ans = eval(inputVal);
+    //     setAnswer(ans);
+      // }catch{
+        // setAnswer("Error");
+        if (value === 'c') {
+          setInputVal('')
+          setAnswer('')
+        }
+        else if(value === '=') {
+          // handal incomplete expression 
+          if(!inputVal || /[+\-*]$/.test(inputVal)){
+            setAnswer('Error')
+            return
+          }
+          try {
+            const ans = eval(inputVal)
+            setAnswer(ans)
+          } catch {
+            setAnswer('Error')
+          }
+        }
+        else {
+          setInputVal((prev) => prev + value)
+        }
+      }
+
+  return (
+    <>
+    <div className='calculatorMainContainer'>
+      <h1>React Calculator</h1>
+      <input type="text" value={inputVal} readOnly />
+      <br />
+      <span>
+        {answer}
+      </span>
+      <div className='buttonContainer'>
+      <button type="button" className="buttonCalc" value={7} onClick={btnVal}>7</button>
+      <button type="button" className="buttonCalc" value={8} onClick={btnVal}>8</button>
+      <button type="button" className="buttonCalc" value={9} onClick={btnVal}>9</button>
+      <button type="button" className="buttonCalc" value={'+'} onClick={btnVal}>+</button>
+      <button type="button" className="buttonCalc" value={4} onClick={btnVal}>4</button>
+      <button type="button" className="buttonCalc" value={5} onClick={btnVal}>5</button>
+      <button type="button" className="buttonCalc" value={6} onClick={btnVal}>6</button>
+      <button type="button" className="buttonCalc" value={'-'} onClick={btnVal}>-</button>
+      <button type="button" className="buttonCalc" value={1} onClick={btnVal}>1</button>
+      <button type="button" className="buttonCalc" value={2} onClick={btnVal}>2</button>
+      <button type="button" className="buttonCalc" value={3} onClick={btnVal}>3</button>
+      <button type="button" className="buttonCalc" value={'*'} onClick={btnVal}>*</button>
+      <button type="button" className="buttonCalc" value={'c'} onClick={btnVal}>c</button>
+      <button type="button" className="buttonCalc" value={0} onClick={btnVal}>0</button>
+      <button type="button" className="buttonCalc" value={'='} onClick={btnVal}>=</button>
+      <button type="button" className="buttonCalc" value={'/'} onClick={btnVal}>/</button>
+    </div>
+    </div>
+    
+    </>
+  )
 }
+
+export default App;

@@ -50,7 +50,7 @@ function App() {
   const [answer,setAnswer] = useState('');
   const btnVal = (e) => {
     const value = e.target.value;
-        if (value === 'c') {
+        if (value === 'C') {
           setInputVal('')
           setAnswer('')
         }

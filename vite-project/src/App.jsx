@@ -50,17 +50,6 @@ function App() {
   const [answer,setAnswer] = useState('');
   const btnVal = (e) => {
     const value = e.target.value;
-
-    // if (value === "c") {
-    //   setInputVal("");
-    //   setAnswer("")
-    // }
-    // else if(value === "="){
-    //   try{
-    //     const ans = eval(inputVal);
-    //     setAnswer(ans);
-      // }catch{
-        // setAnswer("Error");
         if (value === 'c') {
           setInputVal('')
           setAnswer('')
@@ -105,7 +94,7 @@ function App() {
       <button type="button" className="buttonCalc" value={2} onClick={btnVal}>2</button>
       <button type="button" className="buttonCalc" value={3} onClick={btnVal}>3</button>
       <button type="button" className="buttonCalc" value={'*'} onClick={btnVal}>*</button>
-      <button type="button" className="buttonCalc" value={'c'} onClick={btnVal}>c</button>
+      <button type="button" className="buttonCalc" value={'C'} onClick={btnVal}>C</button>
       <button type="button" className="buttonCalc" value={0} onClick={btnVal}>0</button>
       <button type="button" className="buttonCalc" value={'='} onClick={btnVal}>=</button>
       <button type="button" className="buttonCalc" value={'/'} onClick={btnVal}>/</button>
